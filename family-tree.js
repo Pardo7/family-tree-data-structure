@@ -44,6 +44,16 @@ Tree.prototype.findGrandparent = function(name) {
 	console.log(name.data + "'s grandparent is " + name.parent.parent.data);
 };
 
+// Here we will implement a depth first search and log the family members with no children.
+Tree.prototype.traverseNoChildren = function() {
+  for (var i = 0, length = this.children.length; i < length; i++) {
+    this.children[i].traverseNoChildren();
+    if(this.children[i].children.length <= 0) {
+  		console.log(this.children[i].data + " has no children");
+    }
+  }
+};
+
 
 // Creating our family tree
 var tree = new Tree("Nancy");
@@ -71,7 +81,7 @@ george.add("Robert");
 var james = tree.children[1].children[0].children[2];
 james.add("Mary");
 
-
+tree.traverseNoChildren();
 
 
 
