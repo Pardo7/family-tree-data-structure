@@ -39,6 +39,13 @@ Tree.prototype.add = function(data){
 	this.children.push(child);
 };
 
+// Here we pass in a name and it finds the grandparent
+Tree.prototype.findGrandparent = function(name) {
+	console.log(name.data + "'s grandparent is " + name.parent.parent.data);
+};
+
+
+// Creating our family tree
 var tree = new Tree("Nancy");
 tree.add("Adamn");
 tree.add("Jill");
