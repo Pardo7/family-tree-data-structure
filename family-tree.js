@@ -49,7 +49,16 @@ Tree.prototype.traverseNoChildren = function() {
   for (var i = 0, length = this.children.length; i < length; i++) {
     this.children[i].traverseNoChildren();
     if(this.children[i].children.length <= 0) {
-  		console.log(this.children[i].data + " has no children");
+  		console.log(this.children[i].data + " has no children.");
+    }
+  }
+};
+
+Tree.prototype.traverseNoSiblings = function() {
+  for (var i = 0, length = this.children.length; i < length; i++) {
+    this.children[i].traverseNoSiblings();
+    if(this.children[i].parent.children.length <= 1) {
+  		console.log(this.children[i].data + " has no siblings.");
     }
   }
 };
@@ -82,6 +91,7 @@ var james = tree.children[1].children[0].children[2];
 james.add("Mary");
 
 tree.traverseNoChildren();
-
+tree.traverseNoSiblings();
+tree.findGrandparent(kevin);
 
 
